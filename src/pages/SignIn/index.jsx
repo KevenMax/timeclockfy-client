@@ -1,5 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
 
-const SignIn = () => <h1>SignIn</h1>;
+import { Divider, notification } from "antd";
+
+import clock from "../../assets/clock.svg";
+import employees from "../../assets/employees.webp";
+
+import * as Styled from "./styles";
+
+const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email && !password) {
+      notification.warn({
+        message: "Ops...",
+        description: "Email e senha precisam serem preenchidos para continuar.",
+      });
+    }
+  };
+
+  return (
+    <Styled.Container>
+      <Styled.ContainerLeft>
+        <Styled.ContainerBrand>
+          <Styled.Logo src={clock} />
+
+          <Styled.Name>Timeclockfy</Styled.Name>
+        </Styled.ContainerBrand>
+
+        <Styled.Title side="left">
+          Gerencia com eficiência a jornada dos seus colaboradores
+        </Styled.Title>
+
+        <Styled.SubTitle>
+          Através do timeclockfy é possível acompanhar e gerenciar o dia-a-dia
+          de cada colaborador da sua empresa.
+        </Styled.SubTitle>
+      </Styled.ContainerLeft>
+      <Styled.ContainerRight>
+        <Styled.Employees src={employees} />
+
+        <Styled.Title side="right">Entrar</Styled.Title>
+
+        <Divider style={{ width: "276px", minWidth: "276px" }} />
+
+        <Styled.Form onSubmit={handleSubmit}>
+          <Styled.Field>
+            <Styled.Label>Email</Styled.Label>
+            <Styled.Input
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Styled.Field>
+
+          <Styled.Field>
+            <Styled.Label>Senha</Styled.Label>
+            <Styled.Input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Styled.Field>
+
+          <Styled.Submit>Entrar</Styled.Submit>
+        </Styled.Form>
+
+        <Styled.TextCreateUser>
+          Não possui conta ainda? Crie sua{" "}
+          <Styled.LinkNewUser>conta</Styled.LinkNewUser> hoje!
+        </Styled.TextCreateUser>
+      </Styled.ContainerRight>
+    </Styled.Container>
+  );
+};
 
 export default SignIn;

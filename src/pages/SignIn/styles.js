@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as LinkRouter } from "react-router-dom";
 
 export const Container = styled.div`
   display: flex;
@@ -6,52 +7,14 @@ export const Container = styled.div`
   min-height: 100vh;
 `;
 
-export const ContainerLeft = styled.div`
-  width: 36%;
-  background: #4d22c9;
-  padding: 190px 0 0 80px;
-`;
-
-export const ContainerBrand = styled.div`
-  display: flex;
-`;
-
-export const Logo = styled.img`
-  width: 40px;
-  height: 40px;
-`;
-
-export const Name = styled.h3`
-  margin: 13px 0 0 10px;
-  font-weight: 500;
-  color: #ffffff;
-`;
-
 export const Title = styled.h1`
-  ${({ side }) =>
-    side === "left"
-      ? `
-      color: #ffffff; 
-      font-size: 24px;
-      padding: 50px 80px 30px 0;
-    `
-      : `
-      color: #000000; 
-      font-size: 30px;
-      padding: 50px 0 10px;
-    `}
-
+  color: #000000;
+  font-size: 30px;
+  padding: 50px 0 10px;
   font-weight: 500;
 `;
 
-export const SubTitle = styled.h4`
-  color: #ffffff;
-  opacity: 0.5;
-  padding: 40px 80px 40px 0;
-  font-weight: 400;
-`;
-
-export const ContainerRight = styled.div`
+export const ContainerSignIn = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -117,7 +80,7 @@ export const TextCreateUser = styled.p`
   font-size: 13px;
 `;
 
-export const LinkNewUser = styled.a`
+export const Link = styled(LinkRouter)`
   color: #4d22c9;
   &:visited {
     color: #4d22c9;

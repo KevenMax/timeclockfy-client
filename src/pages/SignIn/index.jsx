@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 import { Divider, notification } from "antd";
 
-import * as userService from "../../services/user";
+import employees from "../../assets/employees.webp";
+
+import Banner from "../../components/Banner";
 
 import { useAuth } from "../../contexts/auth";
 
-import clock from "../../assets/clock.svg";
-import employees from "../../assets/employees.webp";
+import * as userService from "../../services/user";
 
 import * as Styled from "./styles";
 
@@ -35,23 +36,8 @@ const SignIn = () => {
 
   return (
     <Styled.Container>
-      <Styled.ContainerLeft>
-        <Styled.ContainerBrand>
-          <Styled.Logo src={clock} />
-
-          <Styled.Name>Timeclockfy</Styled.Name>
-        </Styled.ContainerBrand>
-
-        <Styled.Title side="left">
-          Gerencia com eficiência a jornada dos seus colaboradores
-        </Styled.Title>
-
-        <Styled.SubTitle>
-          Através do timeclockfy é possível acompanhar e gerenciar o dia-a-dia
-          de cada colaborador da sua empresa.
-        </Styled.SubTitle>
-      </Styled.ContainerLeft>
-      <Styled.ContainerRight>
+      <Banner />
+      <Styled.ContainerSignIn>
         <Styled.Employees src={employees} />
 
         <Styled.Title side="right">Entrar</Styled.Title>
@@ -80,9 +66,9 @@ const SignIn = () => {
 
         <Styled.TextCreateUser>
           Não possui conta ainda? Crie sua{" "}
-          <Styled.LinkNewUser>conta</Styled.LinkNewUser> hoje!
+          <Styled.Link to="/auth/new">conta</Styled.Link> hoje!
         </Styled.TextCreateUser>
-      </Styled.ContainerRight>
+      </Styled.ContainerSignIn>
     </Styled.Container>
   );
 };

@@ -23,6 +23,8 @@ export const AuthProvider = ({ children }) => {
   }
 
   function signOut() {
+    setUser(null);
+    setToken(null);
     localStorage.clear();
   }
 

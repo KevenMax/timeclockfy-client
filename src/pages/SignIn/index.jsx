@@ -2,22 +2,34 @@ import React, { useState } from "react";
 
 import { Divider, notification } from "antd";
 
+import * as userService from "../../services/user";
+
+import { useAuth } from "../../contexts/auth";
+
 import clock from "../../assets/clock.svg";
 import employees from "../../assets/employees.webp";
 
 import * as Styled from "./styles";
 
 const SignIn = () => {
+  const { signIn } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email && !password) {
       notification.warn({
         message: "Ops...",
-        description: "Email e senha precisam serem preenchidos para continuar.",
+        description: "Email e senha precisam ser preenchidos para continuar.",
       });
+    } else {
+      const data = { email, password };
+      const auth = await userService.authentication(data);
+      if (auth) {
+        signIn(auth);
+      }
     }
   };
 

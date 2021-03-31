@@ -1,15 +1,18 @@
 import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 
+import { useAuth } from "../contexts/auth";
+
 import SignIn from "../pages/SignIn";
 
 const PublicRoute = ({
   component: Component,
-  token,
   isCustomRoute,
   render,
   ...rest
 }) => {
+  const { signed } = useAuth();
+
   if (isCustomRoute) {
     return <Route {...rest} render={render} />;
   }
@@ -17,7 +20,7 @@ const PublicRoute = ({
     <Route
       {...rest}
       render={(props) => {
-        return token ? <Redirect to="/overview" /> : <Component {...props} />;
+        return signed ? <Redirect to="/overview" /> : <Component {...props} />;
       }}
     />
   );

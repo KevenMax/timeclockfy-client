@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const storagedToken = localStorage.getItem("@token");
 
     setUser(JSON.parse(storagedUser));
-    setToken(JSON.parse(storagedToken));
+    setToken(storagedToken);
   }, []);
 
   function signIn({ user, token }) {

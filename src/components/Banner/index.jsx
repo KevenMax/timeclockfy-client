@@ -5,7 +5,7 @@ import clock from "../../assets/clock.svg";
 import * as Styled from "./styles";
 
 const Banner = () => (
-  <Styled.ContainerLeft>
+  <Styled.Container>
     <Styled.ContainerBrand>
       <Styled.Logo src={clock} />
 
@@ -20,7 +20,7 @@ const Banner = () => (
       Através do timeclockfy é possível acompanhar e gerenciar o dia-a-dia de
       cada colaborador da sua empresa.
     </Styled.SubTitle>
-  </Styled.ContainerLeft>
+  </Styled.Container>
 );
 
 export default Banner;

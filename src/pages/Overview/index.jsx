@@ -1,5 +1,7 @@
 import React from "react";
 
-const Overview = () => <h1>Overview</h1>;
+import Sidebar from "../../components/Sidebar";
+
+const Overview = () => <Sidebar />;
 
 export default Overview;

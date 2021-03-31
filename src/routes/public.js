@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { useAuth } from "../contexts/auth";
 
 import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 const PublicRoute = ({
   component: Component,
@@ -29,6 +30,7 @@ const PublicRoute = ({
 const PublicRoutes = () => (
   <Switch>
     <PublicRoute exact path="/" component={SignIn} />
+    <PublicRoute exact path="/auth/new" component={SignUp} />
   </Switch>
 );
 

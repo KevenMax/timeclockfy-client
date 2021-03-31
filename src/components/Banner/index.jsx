@@ -13,7 +13,7 @@ const Banner = () => (
     </Styled.ContainerBrand>
 
     <Styled.Title>
-      Gerencia com eficiência a jornada dos seus colaboradores
+      Gerencie com eficiência a jornada dos seus colaboradores
     </Styled.Title>
 
     <Styled.SubTitle>

@@ -6,7 +6,6 @@ import HomeIcon from "../../assets/home.svg";
 import LogoutIcon from "../../assets/logout.svg";
 
 export const Container = styled.div`
-  position: absolute;
   width: 80px;
   min-height: 100vh;
   background: #4d22c9;

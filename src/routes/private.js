@@ -3,6 +3,8 @@ import { Route, Redirect, Switch } from "react-router-dom";
 
 import { useAuth } from "../contexts/auth";
 
+import Container from "../components/Container";
+
 import Overview from "../pages/Overview";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -13,7 +15,9 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         signed ? (
-          <Component {...props} />
+          <Container>
+            <Component {...props} />
+          </Container>
         ) : (
           <Redirect to={{ pathname: "/", state: { from: props.location } }} />
         )

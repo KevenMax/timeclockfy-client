@@ -12,6 +12,18 @@ import * as Styled from "./styles";
 
 const Overview = () => {
   const [buttonType, setButtonType] = useState("play");
+  const [records, setRecords] = useState([]);
+
+  useEffect(async () => {
+    const listRecords = await recordService.getAllDay({});
+    if (listRecords) {
+      setRecords(listRecords);
+    }
+  }, []);
+
+  useEffect(() => {
+    setButtonType(records.length % 2 === 1 ? "stop" : "play");
+  }, [records]);
 
   const fallbackHandlePicture = useCallback(async (picture) => {
     const location = getLocation();
@@ -22,7 +34,9 @@ const Overview = () => {
       });
     } else {
       const data = { location, picture };
-      await recordService.create(data);
+      const record = await recordService.create(data);
+
+      setRecords((oldRecords) => [...oldRecords, record]);
     }
   }, []);
 

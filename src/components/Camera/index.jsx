@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import Webcam from "react-webcam";
 
 import { format } from "date-fns";
@@ -14,31 +14,48 @@ const videoConstraints = {
   facingMode: "user",
 };
 
-const Camera = ({ buttonIcon, fallbackSubmit }) => {
+const Camera = ({ buttonType, fallbackHandlePicture }) => {
   const webcamRef = useRef(null);
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timeID = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timeID);
+    };
+  }, []);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
+    fallbackHandlePicture(imageSrc);
   }, [webcamRef]);
 
   return (
     <Styled.ContainerWebcam>
       <Styled.ContentTitle>
         <Styled.Title>Registrar pontos diários</Styled.Title>
+
         <Styled.Info>
-          {format(new Date(), "dd 'de' MMMM 'de' yyyy", { locale: pt })}
+          {format(time, "dd 'de' MMMM 'de' yyyy HH:mm", { locale: pt })}
         </Styled.Info>
       </Styled.ContentTitle>
+
       <Divider style={Styled.Divider} />
+
       <Webcam
         audio={false}
         ref={webcamRef}
         videoConstraints={videoConstraints}
         screenshotFormat="image/jpeg"
         style={Styled.Webcam}
+        mirrored
       />
+
       <Styled.Button>
-        <Styled.Icon icon={buttonIcon} />
+        <Styled.Icon icon={buttonType} onClick={capture} />
       </Styled.Button>
     </Styled.ContainerWebcam>
   );

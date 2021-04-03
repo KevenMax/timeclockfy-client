@@ -4,6 +4,15 @@ const api = axios.create({
   baseURL: "http://localhost:4000",
 });
 
+api.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("@token");
+  if (token) {
+    config.headers.Authorization = token;
+  }
+
+  return config;
+});
+
 // api.interceptors.response.use(
 //   (response) => {
 //     return response;

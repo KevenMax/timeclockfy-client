@@ -54,8 +54,8 @@ const Camera = ({ buttonType, fallbackHandlePicture }) => {
         mirrored
       />
 
-      <Styled.Button>
-        <Styled.Icon icon={buttonType} onClick={capture} />
+      <Styled.Button onClick={capture}>
+        <Styled.Icon icon={buttonType} />
       </Styled.Button>
     </Styled.ContainerWebcam>
   );

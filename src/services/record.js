@@ -5,7 +5,6 @@ import api from "../config/api";
 import isMappedError from "../utils/isMappedError";
 
 export async function getAllDay({ page = 1, offset = 999 }) {
-  console.log(page, offset);
   try {
     const { data: records } = await api.get(
       `/records?page=${page}&offset=${offset}`

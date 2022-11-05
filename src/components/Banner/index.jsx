@@ -10,6 +10,7 @@ const Banner = () => (
       <Styled.Logo src={clock} />
 
       <Styled.Name>Timeclockfy</Styled.Name>
+      
     </Styled.ContainerBrand>
 
     <Styled.Title>

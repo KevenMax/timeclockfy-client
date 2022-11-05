@@ -21,6 +21,7 @@ const Sidebar = () => {
       <Styled.ContainerTop>
         <Styled.Item to="/overview" pathname={history?.location?.pathname}>
           <Styled.Home />
+          
         </Styled.Item>
       </Styled.ContainerTop>
 
